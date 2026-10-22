@@ -1,0 +1,104 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "project_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_model_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "run_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "changes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "change_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "entity_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "operation": {
+            "enum": [
+              "translate_along_normal",
+              "rotate_plane",
+              "resize_parameter"
+            ]
+          },
+          "value": {
+            "type": "number"
+          },
+          "unit": {
+            "enum": [
+              "meter",
+              "radian"
+            ]
+          },
+          "decision": {
+            "const": "accepted_by_user"
+          },
+          "evidence": {
+            "type": "object",
+            "properties": {
+              "supporting_frames": {
+                "type": "integer",
+                "minimum": 2
+              },
+              "view_directions": {
+                "type": "integer",
+                "minimum": 2
+              },
+              "visibility_passed": {
+                "const": true
+              },
+              "topology_passed": {
+                "const": true
+              },
+              "closed_loop_passed": {
+                "const": true
+              }
+            },
+            "required": [
+              "supporting_frames",
+              "view_directions",
+              "visibility_passed",
+              "topology_passed",
+              "closed_loop_passed"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "change_id",
+          "entity_id",
+          "operation",
+          "value",
+          "unit",
+          "decision",
+          "evidence"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "project_id",
+    "source_model_sha256",
+    "run_id",
+    "changes"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

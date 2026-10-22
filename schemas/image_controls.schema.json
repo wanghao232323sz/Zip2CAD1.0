@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object", "additionalProperties": false,
+  "required": ["schema_version", "project_id", "source_model_sha256", "coordinate_space", "controls"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "project_id": {"type": "string", "minLength": 1},
+    "source_model_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "coordinate_space": {"const": "prediction_image_pixel_centres"},
+    "controls": {"type": "array", "minItems": 6, "items": {
+      "type": "object", "additionalProperties": false,
+      "required": ["control_id", "block_id", "frame_file", "frame_sha256", "prediction_sha256", "prediction_shape_hw", "pixel_xy", "target_world_m", "target_basis", "target_reference", "role"],
+      "properties": {
+        "control_id": {"type": "string", "minLength": 1},
+        "block_id": {"type": "string", "minLength": 1},
+        "frame_file": {"type": "string", "pattern": "^[^/\\\\]+$"},
+        "frame_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "prediction_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "prediction_shape_hw": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"type": "integer", "minimum": 1}},
+        "pixel_xy": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"type": "integer", "minimum": 0}},
+        "target_world_m": {"type": "array", "minItems": 3, "maxItems": 3, "items": {"type": "number"}},
+        "target_basis": {"enum": ["model_correspondence", "independent_measurement"]},
+        "target_reference": {"type": "string", "minLength": 1},
+        "role": {"enum": ["training", "validation"]}
+      }
+    }}
+  }
+}

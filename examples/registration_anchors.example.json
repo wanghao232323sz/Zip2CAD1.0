@@ -1,0 +1,6 @@
+{
+  "schema": "paired_registration_anchors_v1",
+  "notice": "Synthetic format example only; replace with matching source/CAD points. Use stable exterior, never the roof being evaluated.",
+  "observed_points": [[0,0,0],[1,0,0],[0,1,0],[0,0,1]],
+  "CAD_points": [[10,20,0],[12,20,0],[10,22,0],[10,20,2]]
+}

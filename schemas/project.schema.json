@@ -1,0 +1,123 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "project_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]+$"
+    },
+    "project_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "building_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "model_namespace": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_model_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_model_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "sketchup_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_unit": {
+      "enum": [
+        "inch",
+        "foot",
+        "millimeter",
+        "centimeter",
+        "meter",
+        "yard"
+      ]
+    },
+    "coordinate_system": {
+      "type": "object",
+      "properties": {
+        "handedness": {
+          "const": "right"
+        },
+        "up_axis": {
+          "const": "Z"
+        },
+        "origin_m": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 3,
+          "maxItems": 3
+        }
+      },
+      "required": [
+        "handedness",
+        "up_axis",
+        "origin_m"
+      ],
+      "additionalProperties": false
+    },
+    "geometry_file": {
+      "const": "scene.dae"
+    },
+    "entities_file": {
+      "const": "entities.json"
+    },
+    "media": {
+      "type": "object",
+      "properties": {
+        "images_dir": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "video_file": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "images_dir",
+        "video_file"
+      ],
+      "additionalProperties": false
+    },
+    "mode": {
+      "enum": [
+        "audit",
+        "assisted"
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "project_id",
+    "project_name",
+    "building_id",
+    "model_namespace",
+    "source_model_name",
+    "source_model_sha256",
+    "sketchup_version",
+    "source_unit",
+    "coordinate_system",
+    "geometry_file",
+    "entities_file",
+    "media",
+    "mode"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

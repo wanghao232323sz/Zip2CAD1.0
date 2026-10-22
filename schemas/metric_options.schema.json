@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object", "additionalProperties": false,
+  "required": ["schema_version", "registration"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "registration": {
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "source_samples": {"type": "integer", "minimum": 32, "maximum": 100000},
+        "target_samples": {"type": "integer", "minimum": 100, "maximum": 200000},
+        "yaw_step_degrees": {"type": "number", "minimum": 5, "maximum": 90},
+        "iterations": {"type": "integer", "minimum": 1, "maximum": 100},
+        "trim_fraction": {"type": "number", "minimum": 0.5, "maximum": 0.9},
+        "target_semantics": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"enum": ["wall", "roof", "ground", "site_slope"]}},
+        "minimum_scale_ratio": {"type": "number", "exclusiveMinimum": 0, "exclusiveMaximum": 1},
+        "maximum_scale_ratio": {"type": "number", "exclusiveMinimum": 1}
+      }
+    }
+  }
+}

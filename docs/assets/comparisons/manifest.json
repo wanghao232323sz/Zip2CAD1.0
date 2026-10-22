@@ -1,0 +1,51 @@
+{
+  "source": "author-supplied screenshots and site photographs",
+  "pixel_editing": false,
+  "images": [
+    {
+      "file": "library_scene.png",
+      "sha256": "5a73d0317183abe6bcc9580eb747a217e06a248eae1830a4045cb010e8b1c233",
+      "bytes": 3261784
+    },
+    {
+      "file": "library_before.png",
+      "sha256": "119879b2d87b65a1a975829de5356203356e5a3183e4d6d85a276a86f417d513",
+      "bytes": 2135722
+    },
+    {
+      "file": "library_after.png",
+      "sha256": "fe95f93e64e46990be49cfd7ea985c53921a0b7040ef20af4166227ef7c38db4",
+      "bytes": 1576496
+    },
+    {
+      "file": "island_scene.png",
+      "sha256": "6246da79ea944d0d6cb6b63526ea679e4980f041cbcbcf6c97f53dc7d8b598ee",
+      "bytes": 3805440
+    },
+    {
+      "file": "island_before.png",
+      "sha256": "13fa1c287e59525311103ae6fedb6d417cb65d7d37ddccfd4f564312bd4ee2fb",
+      "bytes": 884447
+    },
+    {
+      "file": "island_after.png",
+      "sha256": "05054ca77c76b0efbee88689da5afc553cf5c8ba164dfae7f746cf9f6487e7ee",
+      "bytes": 621539
+    },
+    {
+      "file": "landscape_roof_scene.png",
+      "sha256": "bb7c96b8482b746080c0a3a8f6a3089da9e9e9dbc41e16e3c72d6374c0e8aa31",
+      "bytes": 4126354
+    },
+    {
+      "file": "landscape_roof_before.png",
+      "sha256": "bbefe61a1ff08a6ffc7cd49f421034888e96fe16a8efcd1a43d69dbd4b41cff8",
+      "bytes": 2726681
+    },
+    {
+      "file": "landscape_roof_after.png",
+      "sha256": "ead1a8a8c9efad9514faf9b45c2a1f5acf002ea5e3ee716115a00d6b5681e95b",
+      "bytes": 1507545
+    }
+  ]
+}

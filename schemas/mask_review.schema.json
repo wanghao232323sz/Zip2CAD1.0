@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object", "additionalProperties": false,
+  "required": ["schema_version", "coordinate_space", "rasterization", "source_mask_manifest_sha256", "frames"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "coordinate_space": {"const": "prediction_image_pixel_centres"},
+    "rasterization": {"const": "ordered_last_polygon_wins"},
+    "source_mask_manifest_sha256": {"$ref": "#/$defs/hash"},
+    "frames": {"type": "array", "maxItems": 100000, "items": {"$ref": "#/$defs/frame"}}
+  },
+  "$defs": {
+    "hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "polygon": {
+      "type": "object", "additionalProperties": false, "required": ["class_id", "vertices_xy"],
+      "properties": {
+        "class_id": {"type": "integer", "minimum": 0, "maximum": 7},
+        "vertices_xy": {"type": "array", "minItems": 3, "maxItems": 4096,
+          "items": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"type": "integer", "minimum": 0}}}
+      }
+    },
+    "frame": {
+      "type": "object", "additionalProperties": false,
+      "required": ["block_id", "frame_file", "prediction_sha256", "prediction_shape_hw", "annotation_image_sha256", "source_mask_sha256", "decision", "reviewer", "reviewed_at_utc", "note", "polygons"],
+      "properties": {
+        "block_id": {"type": "string", "minLength": 1}, "frame_file": {"type": "string", "minLength": 1},
+        "prediction_sha256": {"$ref": "#/$defs/hash"}, "annotation_image_sha256": {"$ref": "#/$defs/hash"},
+        "source_mask_sha256": {"$ref": "#/$defs/hash"},
+        "prediction_shape_hw": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"type": "integer", "minimum": 1}},
+        "decision": {"enum": ["draft", "confirmed_visible_target_only", "confirmed_no_visible_target"]},
+        "reviewer": {"type": "string", "maxLength": 256},
+        "reviewed_at_utc": {"type": ["string", "null"], "format": "date-time"},
+        "note": {"type": "string", "maxLength": 4096},
+        "polygons": {"type": "array", "maxItems": 2048, "items": {"$ref": "#/$defs/polygon"}}
+      },
+      "allOf": [{"if": {"properties": {"decision": {"enum": ["confirmed_visible_target_only", "confirmed_no_visible_target"]}}},
+        "then": {"properties": {"reviewer": {"pattern": "\\S"}, "reviewed_at_utc": {"type": "string", "format": "date-time"}, "note": {"pattern": "\\S"}}}}]
+    }
+  }
+}

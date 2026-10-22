@@ -1,0 +1,21 @@
+{
+  "python": "3.11.15",
+  "packages": {
+    "torch": "2.11.0+cu128",
+    "numpy": "2.4.6",
+    "scipy": "1.17.1",
+    "trimesh": "4.12.2",
+    "shapely": "2.1.2",
+    "rtree": "1.4.1",
+    "opencv-python-headless": "4.13.0.92",
+    "Pillow": "11.3.0",
+    "manifold3d": "3.5.1",
+    "mapbox-earcut": "2.0.0",
+    "huggingface-hub": "0.36.2",
+    "einops": "0.8.2",
+    "einx": "0.4.3"
+  },
+  "CUDA": "12.8",
+  "test_device": "RTX 5070 Ti Laptop 12GB",
+  "not_a_universal_environment_lock": true
+}

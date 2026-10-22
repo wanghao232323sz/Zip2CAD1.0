@@ -1,0 +1,28 @@
+{
+  "schema": "zip2cad_public_task_models_v1",
+  "license": "MIT",
+  "training_scope": "single-building research adaptation; no independent building validation",
+  "models": {
+    "geometry": {
+      "file": "models/pretrained/geometry.pt",
+      "sha256": "8992cec5d238047db22577757f4d2e9cee808f497b58b5cbc6dcccb87ee53a8b",
+      "bytes": 2466321,
+      "source_checkpoint_sha256": "a0b6a851fb05e42c035783d531902169d90c8d2767ba3430b5de455b199ae10c",
+      "model_tensors_identical_to_trained_source": true
+    },
+    "semantic": {
+      "file": "models/pretrained/semantic.pt",
+      "sha256": "79b596472888944812b68a298b1e9543a7c65951281feaa9ec8c93efa9f5118d",
+      "bytes": 598733,
+      "source_checkpoint_sha256": "6001385e0d8ca1eddc8004552c1e514f51b3dbc143ff1de358a02dc3f3b7eb22",
+      "model_tensors_identical_to_trained_source": true
+    },
+    "corners": {
+      "file": "models/pretrained/corners.pt",
+      "sha256": "27ea0640ba8ff60c9041380686b22be4337f71defdd70a57626dc5dcce424104",
+      "bytes": 182207,
+      "source_checkpoint_sha256": "e4fc253d51131b8d00e56bf28333614f447a41ba261f062aa50bbe8c2efbe5e5",
+      "model_tensors_identical_to_trained_source": true
+    }
+  }
+}

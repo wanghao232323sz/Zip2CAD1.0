@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object", "additionalProperties": false,
+  "required": ["schema_version", "mode", "unknown_policy", "uncertain_result", "manual_review", "automatic_target_validation_required"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "mode": {"enum": ["automatic", "manual"]},
+    "unknown_policy": {"const": "exclude_from_evidence"},
+    "uncertain_result": {"const": "abstain"},
+    "manual_review": {"const": "optional"},
+    "automatic_target_validation_required": {"const": true}
+  }
+}

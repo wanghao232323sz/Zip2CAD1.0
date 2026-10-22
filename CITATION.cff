@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "Please cite the official ZipMap and Sonata papers as appropriate, and describe this CAD correction research pipeline."
+title: "Zip2CAD: ZipMap反向修正CAD图纸"
+type: software
+version: 1.0.0
+date-released: 2026-10-21
+license: MIT
+authors:
+  - name: "Zip2CAD contributors"

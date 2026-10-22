@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=75", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "zip2cad"
+version = "1.0.0"
+description = "ZipMap video reconstruction, observation-supervised geometry and editable CAD correction research pipeline"
+requires-python = ">=3.11,<3.14"
+readme = "README.md"
+license = {file = "LICENSE"}
+dependencies = ["numpy>=1.26,<3", "scipy>=1.14,<2", "trimesh>=4.8,<5", "shapely>=2.1,<3", "rtree>=1.3,<2", "Pillow>=11,<13", "opencv-python-headless>=4.11,<5", "jsonschema>=4.23,<5", "networkx>=3.4,<4", "scikit-image>=0.25,<1", "mapbox-earcut>=1.0,<3", "manifold3d>=3,<4"]
+
+[project.optional-dependencies]
+neural = ["torch>=2.6,<3", "matplotlib>=3.9,<4"]
+reconstruction = ["huggingface-hub>=0.27,<2", "einops>=0.8,<1", "safetensors>=0.5,<1", "einx>=0.3,<1", "addict>=2.4,<3", "timm>=0.9.16,<1", "hydra-core>=1.3,<2", "omegaconf>=2.3,<3", "iopath>=0.1,<1", "fvcore>=0.1", "easydict>=1.13,<2", "matplotlib>=3.9,<4"]
+documents = ["python-docx>=1.1,<2"]
+dev = ["pytest>=8,<10", "build>=1.2,<2"]
+
+[project.scripts]
+zip2cad = "zip2cad.release_cli:main"
+zip2cad-sdk = "zip2cad.headless_cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.data-files]
+"share/zip2cad/schemas" = ["schemas/*.schema.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

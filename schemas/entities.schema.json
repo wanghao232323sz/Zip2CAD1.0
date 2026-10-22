@@ -1,0 +1,207 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "model_namespace": {
+      "type": "string",
+      "minLength": 1
+    },
+    "entities": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "entity_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "persistent_id": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "persistent_id_path": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]*(\\.[1-9][0-9]*)*$"
+          },
+          "entity_type": {
+            "enum": [
+              "group",
+              "component_instance",
+              "face",
+              "edge"
+            ]
+          },
+          "name": {
+            "type": "string"
+          },
+          "tag": {
+            "type": "string"
+          },
+          "material": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "parent_entity_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "definition_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "instance_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "local_transform": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 4,
+              "maxItems": 4
+            },
+            "minItems": 4,
+            "maxItems": 4
+          },
+          "world_transform": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 4,
+              "maxItems": 4
+            },
+            "minItems": 4,
+            "maxItems": 4
+          },
+          "bbox_local_m": {
+            "type": "object",
+            "properties": {
+              "min": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "minItems": 3,
+                "maxItems": 3
+              },
+              "max": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "minItems": 3,
+                "maxItems": 3
+              }
+            },
+            "required": [
+              "min",
+              "max"
+            ],
+            "additionalProperties": false
+          },
+          "bbox_world_m": {
+            "type": "object",
+            "properties": {
+              "min": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "minItems": 3,
+                "maxItems": 3
+              },
+              "max": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "minItems": 3,
+                "maxItems": 3
+              }
+            },
+            "required": [
+              "min",
+              "max"
+            ],
+            "additionalProperties": false
+          },
+          "editable": {
+            "type": "boolean"
+          },
+          "locked_reason": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "geometry_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "vertex_refs": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "uniqueItems": true
+          },
+          "face_refs": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "entity_id",
+          "persistent_id",
+          "persistent_id_path",
+          "entity_type",
+          "name",
+          "tag",
+          "material",
+          "parent_entity_id",
+          "definition_id",
+          "instance_id",
+          "local_transform",
+          "world_transform",
+          "bbox_local_m",
+          "bbox_world_m",
+          "editable",
+          "locked_reason",
+          "geometry_sha256",
+          "vertex_refs",
+          "face_refs"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "model_namespace",
+    "entities"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

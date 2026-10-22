@@ -1,0 +1,38 @@
+{
+  "schema": "zip2cad_pipeline_v1",
+  "project_root": "..",
+  "video": "data/raw/survey.mp4",
+  "source_cad": "data/raw/original.skp",
+  "scope_pid_path": [],
+  "video_preprocessing": {
+    "sample_fps": 1.0,
+    "min_sharpness": 700,
+    "block_size": 24,
+    "block_overlap": 8
+  },
+  "reconstruction": {
+    "mode": "official",
+    "repository": "third_party/ZipMap",
+    "checkpoint": "models/zipmap/checkpoint_aff_inv.pt"
+  },
+  "fusion": {
+    "confidence_percentile": 60,
+    "pixel_stride": 4
+  },
+  "registration": {
+    "mode": "anchors",
+    "anchors": "data/annotations/registration_anchors.json"
+  },
+  "roof_context": {
+    "voxel_m": 0.15,
+    "xy_margin_m": 1.0
+  },
+  "neural": {
+    "enabled": true,
+    "sonata_repository": "third_party/sonata",
+    "sonata_weights": "models/sonata/sonata.pth",
+    "semantic_checkpoint": "models/pretrained/semantic.pt",
+    "geometry_checkpoint": "models/pretrained/geometry.pt"
+  },
+  "evaluation_samples": 20000
+}
